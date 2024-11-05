@@ -14,8 +14,8 @@
         }
 
         .frame {
-            width: 500px; /* Установлено фиксированное значение */
-            height: 500px; /* Установлено фиксированное значение */
+            width: 600px; /* Увеличенная ширина рамки */
+            height: 600px; /* Увеличенная высота рамки */
             margin: 50px auto;
             border: 20px solid transparent;
             background-image: url('photo.png'); /* Рамка (фоновое изображение) */
@@ -28,21 +28,26 @@
         }
 
         .slider {
-            width: 500px; /* Установлено фиксированное значение */
-            height: 500px; /* Установлено фиксированное значение */
+            width: 600px; /* Увеличенная ширина слайдера */
+            height: 600px; /* Увеличенная высота слайдера */
             overflow: hidden;
             position: relative;
+            display: flex; /* Изменено на flex для выравнивания изображений */
+            justify-content: center;
+            align-items: center;
         }
 
         .slides {
             display: flex;
             transition: transform 0.5s ease-in-out;
+            align-items: center; /* Центрирование по вертикали */
         }
 
         .slides img {
-            width: 500px; /* Установлено фиксированное значение */
-            height: 500px; /* Установлено фиксированное значение */
+            width: 600px; /* Установлено фиксированное значение */
+            height: 600px; /* Установлено фиксированное значение */
             object-fit: cover; /* Это позволит изображениям занимать весь блок без искажения */
+            display: block; /* Для лучшего выравнивания */
         }
 
         .buttons {
@@ -113,7 +118,7 @@
                 index = totalSlides - 1;
             }
 
-            slides.style.transform = `translateX(${-index * 500}px)`; // Изменено на 500px
+            slides.style.transform = `translateX(${-index * 600}px)`; // Изменено на 600px
         }
     </script>
 </head>
@@ -138,4 +143,4 @@
         <button onclick="showSlide(1)">Вперед</button>
     </div>
 </body>
-</html>
+</html> 
