@@ -11,27 +11,15 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
-        }
-
-        .frame {
-            width: 600px; /* Увеличенная ширина рамки */
-            height: 600px; /* Увеличенная высота рамки */
-            margin: 50px auto;
-            border: 20px solid transparent;
-            background-image: url('photo.png'); /* Рамка (фоновое изображение) */
-            background-size: cover;
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            position: relative; /* Для правильного позиционирования */
         }
 
         .slider {
-            width: 100%; /* Занимает всю ширину рамки */
-            height: 100%; /* Занимает всю высоту рамки */
+            width: 600px; /* Увеличенная ширина слайдера */
+            height: 600px; /* Увеличенная высота слайдера */
             overflow: hidden;
             position: relative;
+            margin: 50px auto; /* Центрирование слайдера */
         }
 
         .slides {
@@ -52,6 +40,22 @@
             height: 100%; /* Занимает всю высоту слайда */
             object-fit: cover; /* Это позволит изображениям занимать весь блок без искажения */
             display: block; /* Для лучшего выравнивания */
+        }
+
+        .frame {
+            position: absolute; /* Позиционирование рамки поверх фотографий */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 20px solid transparent;
+            background-image: url('photo.png'); /* Рамка (фоновое изображение) */
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            pointer-events: none; /* Рамка не будет перехватывать события клика */
         }
 
         .buttons {
@@ -76,6 +80,13 @@
             background-color: #ff1493;
         }
 
+        .thank-you {
+            text-align: center; /* Центрирование текста */
+            font-size: 24px; /* Размер шрифта */
+            color: #ff69b4; /* Цвет текста */
+            margin-top: 20px; /* Отступ сверху */
+        }
+
         .star {
             position: absolute;
             width: 3px;
@@ -95,9 +106,6 @@
                 opacity: 0;
             }
         }
-       .rar {
-           color: white;
-       }
     </style>
     <script>
         // Скрипт для анимации падающих звезд
@@ -130,25 +138,24 @@
     </script>
 </head>
 <body>
-    <div class="frame">
-        <div class="slider">
-            <div class="slides">
-                <!-- Вставьте сюда ваши изображения -->
-                <div class="slide"><img src="photo1.jpg" alt="Фото 1"></div>
-                <div class="slide"><img src="photo2.jpg" alt="Фото 2"></div>
-                <div class="slide"><img src="photo3.jpg" alt="Фото 3"></div>
-                <div class="slide"><img src="photo4.jpg" alt="Фото 4"></div>
-                <div class="slide"><img src="photo5.jpg" alt="Фото 5"></div>
-                <div class="slide"><img src="photo6.jpg" alt="Фото 6"></div>
-                <div class="slide"><img src="photo7.jpg" alt="Фото 7"></div>
-                <div class="slide"><img src="photo8.jpg" alt="Фото 8"></div>
-            </div>
+    <div class="slider">
+        <div class="slides">
+            <!-- Вставьте сюда ваши изображения -->
+            <div class="slide"><img src="photo1.jpg" alt="Фото 1"></div>
+            <div class="slide"><img src="photo2.jpg" alt="Фото 2"></div>
+            <div class="slide"><img src="photo3.jpg" alt="Фото 3"></div>
+            <div class="slide"><img src="photo4.jpg" alt="Фото 4"></div>
+            <div class="slide"><img src="photo5.jpg" alt="Фото 5"></div>
+            <div class="slide"><img src="photo6.jpg" alt="Фото 6"></div>
+            <div class="slide"><img src="photo7.jpg" alt="Фото 7"></div>
+            <div class="slide"><img src="photo8.jpg" alt="Фото 8"></div>
         </div>
+        <div class="frame"></div> <!-- Рамка поверх фотографий -->
     </div>
     <div class="buttons">
         <button onclick="showSlide(-1)">Назад</button>
         <button onclick="showSlide(1)">Вперед</button>
     </div>
-    <h2 class="rar">Спасибо что ты есть</h2>
+    <div class="thank-you">Спасибо что ты есть</div> <!-- Текст снизу -->
 </body>
-</html> 
+</html>
