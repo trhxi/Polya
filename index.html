@@ -14,10 +14,11 @@
         }
 
         .frame {
-            width: 80%;
+            width: 500px; /* Установлено фиксированное значение */
+            height: 500px; /* Установлено фиксированное значение */
             margin: 50px auto;
             border: 20px solid transparent;
-            background-image: url('photo.png');
+            background-image: url('photo.png'); /* Рамка (фоновое изображение) */
             background-size: cover;
             padding: 10px;
             display: flex;
@@ -27,7 +28,8 @@
         }
 
         .slider {
-            width: 600px;
+            width: 500px; /* Установлено фиксированное значение */
+            height: 500px; /* Установлено фиксированное значение */
             overflow: hidden;
             position: relative;
         }
@@ -38,9 +40,9 @@
         }
 
         .slides img {
-            width: 600px;
-            height: 400px;
-            object-fit: cover;
+            width: 500px; /* Установлено фиксированное значение */
+            height: 500px; /* Установлено фиксированное значение */
+            object-fit: cover; /* Это позволит изображениям занимать весь блок без искажения */
         }
 
         .buttons {
@@ -111,7 +113,7 @@
                 index = totalSlides - 1;
             }
 
-            slides.style.transform = `translateX(${-index * 600}px)`;
+            slides.style.transform = `translateX(${-index * 500}px)`; // Изменено на 500px
         }
     </script>
 </head>
