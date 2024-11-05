@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фотоальбом с анимацией</title>
+    <style>
+        body {
+            background-color: #FFC0CB; /* Нежно-розовый фон */
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .frame {
+            width: 80%;
+            margin: 50px auto;
+            border: 20px solid transparent;
+            background-image: url('photo.png');
+            background-size: cover;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .slider {
+            width: 600px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slides img {
+            width: 600px;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            gap: 10px; /* Расстояние между кнопками */
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #ff69b4;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff1493;
+        }
+
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background-color: white;
+            border-radius: 50%;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) translateX(calc(100vw - 50vw));
+                opacity: 0;
+            }
+        }
+    </style>
+    <script>
+        // Скрипт для анимации падающих звезд
+        document.addEventListener("DOMContentLoaded", () => {
+            for (let i = 0; i < 50; i++) {
+                let star = document.createElement("div");
+                star.classList.add("star");
+                star.style.top = `${Math.random() * 100}vh`;
+                star.style.left = `${Math.random() * 100}vw`;
+                star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                document.body.appendChild(star);
+            }
+        });
+
+        // Скрипт для слайдера
+        let index = 0;
+        function showSlide(n) {
+            const slides = document.querySelector('.slides');
+            const totalSlides = slides.children.length;
+
+            index += n;
+            if (index >= totalSlides) {
+                index = 0;
+            } else if (index < 0) {
+                index = totalSlides - 1;
+            }
+
+            slides.style.transform = `translateX(${-index * 600}px)`;
+        }
+    </script>
+</head>
+<body>
+    <div class="frame">
+        <div class="slider">
+            <div class="slides">
+                <!-- Вставьте сюда ваши изображения -->
+                <img src="photo1.jpg" alt="Фото 1">
+                <img src="photo2.jpg" alt="Фото 2">
+                <img src="photo3.jpg" alt="Фото 3">
+                <img src="photo4.jpg" alt="Фото 4">
+                <img src="photo5.jpg" alt="Фото 5">
+                <img src="photo6.jpg" alt="Фото 6">
+                <img src="photo7.jpg" alt="Фото 7">
+                <img src="photo8.jpg" alt="Фото 8">
+            </div>
+        </div>
+    </div>
+    <div class="buttons">
+        <button onclick="showSlide(-1)">Назад</button>
+        <button onclick="showSlide(1)">Вперед</button>
+    </div>
+</body>
+</html>
